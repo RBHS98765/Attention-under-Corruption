@@ -1,0 +1,188 @@
+{
+  "dataset": {
+    "source": "Zenodo record 2535967 (CIFAR-10-C and CIFAR-10-P), DOI 10.5281/zenodo.2535967, CC BY 4.0",
+    "revision": "Zenodo revision 6; CIFAR-10-C.tar MD5 56bf5dcef84df0e2308c6dcbcbbd8499, size 2,918,471,680 bytes",
+    "corruption_count": 19,
+    "corruptions": [
+      "gaussian_noise",
+      "shot_noise",
+      "impulse_noise",
+      "defocus_blur",
+      "glass_blur",
+      "motion_blur",
+      "zoom_blur",
+      "snow",
+      "frost",
+      "fog",
+      "brightness",
+      "contrast",
+      "elastic_transform",
+      "pixelate",
+      "jpeg_compression",
+      "speckle_noise",
+      "gaussian_blur",
+      "spatter",
+      "saturate"
+    ],
+    "classification": "original_15_plus_4_extra (19-type package)",
+    "required_corruptions": {
+      "brightness": {
+        "found": true,
+        "filename": "brightness.npy",
+        "severities": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "shape": [
+          50000,
+          32,
+          32,
+          3
+        ],
+        "count_per_severity": 10000,
+        "dtype": "uint8"
+      },
+      "contrast": {
+        "found": true,
+        "filename": "contrast.npy",
+        "severities": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "shape": [
+          50000,
+          32,
+          32,
+          3
+        ],
+        "count_per_severity": 10000,
+        "dtype": "uint8"
+      },
+      "defocus_blur": {
+        "found": true,
+        "filename": "defocus_blur.npy",
+        "severities": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "shape": [
+          50000,
+          32,
+          32,
+          3
+        ],
+        "count_per_severity": 10000,
+        "dtype": "uint8"
+      },
+      "elastic_transform": {
+        "found": true,
+        "filename": "elastic_transform.npy",
+        "severities": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "shape": [
+          50000,
+          32,
+          32,
+          3
+        ],
+        "count_per_severity": 10000,
+        "dtype": "uint8"
+      }
+    },
+    "severity_levels": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "sample_checks": {
+      "brightness": {
+        "sev1_mean": 117.99,
+        "sev2_mean": 128.19,
+        "sev3_mean": 138.29,
+        "sev4_mean": 148.27,
+        "sev5_mean": 167.23,
+        "finite": true
+      },
+      "contrast": {
+        "sev1_mean": 107.91,
+        "sev2_mean": 107.94,
+        "sev3_mean": 107.95,
+        "sev4_mean": 107.9,
+        "sev5_mean": 107.89,
+        "finite": true
+      },
+      "defocus_blur": {
+        "sev1_mean": 107.87,
+        "sev2_mean": 107.84,
+        "sev3_mean": 107.8,
+        "sev4_mean": 107.8,
+        "sev5_mean": 107.79,
+        "finite": true
+      },
+      "elastic_transform": {
+        "sev1_mean": 110.27,
+        "sev2_mean": 107.14,
+        "sev3_mean": 108.93,
+        "sev4_mean": 107.28,
+        "sev5_mean": 107.71,
+        "finite": true
+      },
+      "labels_match_cifar10_test": true,
+      "labels_structure": "5 identical blocks of 10000, uint8, classes 0-9"
+    },
+    "mirror": {
+      "hf_mirror": "WNJXYK/TTA-CIFAR-10-C",
+      "revision_sha": "0f57314bbe937783522f1d348758ca2367ed09a9",
+      "corruption_count": 15,
+      "discrepancy": "HF mirror is a 15-config subset; missing gaussian_blur, saturate, spatter, speckle_noise present in the official 19-type Zenodo tarball"
+    }
+  },
+  "environment": {
+    "python": "3.12.10",
+    "pytorch": "2.13.0+cpu",
+    "torchvision": "0.28.0+cpu",
+    "cuda": "not available (CPU-only build; torch.version.cuda = None)",
+    "os": "Linux 6.8.0-86-generic x86_64 (glibc 2.36), 48 CPU, 377 GB RAM, no GPU"
+  },
+  "attention_modules": {
+    "bam": {
+      "import": "pass",
+      "forward": "pass (all 3 shapes, shape-preserving, finite, float32, no CUDA move)",
+      "backward": "pass (20/20 params get finite gradients on all shapes)",
+      "state_dict": "pass (32 tensors, max abs diff 0.0)",
+      "note": "pristine constructor fails: NameError 'gate_activation' is not defined (upstream bug); tests run on a patched temp copy with that dead line removed; upstream file unmodified (patch saved as bam_gate_activation_fix.patch)"
+    },
+    "cbam": {
+      "import": "pass",
+      "forward": "pass (all 3 shapes, shape-preserving, finite, float32, no CUDA move)",
+      "backward": "pass (7/7 params get finite gradients on all shapes)",
+      "state_dict": "pass (10 tensors, max abs diff 0.0)",
+      "note": "pristine, no modification"
+    }
+  },
+  "blockers": [
+    {
+      "item": "BAM upstream MODELS/bam.py gate_activation NameError",
+      "severity": "non-blocking",
+      "fix": "remove the dead line 'self.gate_activation = gate_activation' from ChannelGate.__init__ when integrating in Week 2",
+      "changes_design": false
+    }
+  ],
+  "conclusion": "WEEK 1 PASS WITH NON-BLOCKING ISSUES"
+}

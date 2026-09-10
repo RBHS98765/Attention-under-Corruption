@@ -1,0 +1,289 @@
+{
+  "import": {
+    "bam": "ok",
+    "cbam": "ok"
+  },
+  "bam": {
+    "import": "ok",
+    "pristine_constructor": "NameError: name 'gate_activation' is not defined",
+    "patch_used": "removed 'self.gate_activation = gate_activation' (undefined variable)",
+    "patch_path": "/tmp/bam_patched_qqe7htmg/bam.py",
+    "constructor": "ok",
+    "forward": {
+      "shapes": {
+        "(2, 64, 32, 32)": {
+          "output_shape": [
+            2,
+            64,
+            32,
+            32
+          ],
+          "shape_preserved": true,
+          "finite": true,
+          "dtype": "torch.float32",
+          "dtype_ok": true,
+          "device_moved": false,
+          "warnings": []
+        },
+        "(2, 128, 16, 16)": {
+          "output_shape": [
+            2,
+            128,
+            16,
+            16
+          ],
+          "shape_preserved": true,
+          "finite": true,
+          "dtype": "torch.float32",
+          "dtype_ok": true,
+          "device_moved": false,
+          "warnings": []
+        },
+        "(2, 256, 8, 8)": {
+          "output_shape": [
+            2,
+            256,
+            8,
+            8
+          ],
+          "shape_preserved": true,
+          "finite": true,
+          "dtype": "torch.float32",
+          "dtype_ok": true,
+          "device_moved": false,
+          "warnings": []
+        }
+      }
+    },
+    "backward": {
+      "(2, 64, 32, 32)": {
+        "loss": 0.006245918571949005,
+        "input_grad_exists": true,
+        "input_grad_finite": true,
+        "params_with_grad": 20,
+        "params_total": 20
+      },
+      "(2, 128, 16, 16)": {
+        "loss": -0.005551377311348915,
+        "input_grad_exists": true,
+        "input_grad_finite": true,
+        "params_with_grad": 20,
+        "params_total": 20
+      },
+      "(2, 256, 8, 8)": {
+        "loss": -0.006831873208284378,
+        "input_grad_exists": true,
+        "input_grad_finite": true,
+        "params_with_grad": 20,
+        "params_total": 20
+      }
+    },
+    "eval": {
+      "(2, 64, 32, 32)": {
+        "output_shape": [
+          2,
+          64,
+          32,
+          32
+        ],
+        "shape_preserved": true,
+        "finite": true
+      },
+      "(2, 128, 16, 16)": {
+        "output_shape": [
+          2,
+          128,
+          16,
+          16
+        ],
+        "shape_preserved": true,
+        "finite": true
+      },
+      "(2, 256, 8, 8)": {
+        "output_shape": [
+          2,
+          256,
+          8,
+          8
+        ],
+        "shape_preserved": true,
+        "finite": true
+      }
+    },
+    "state_dict": {
+      "state_dict_tensors": 32,
+      "max_abs_diff": 0.0,
+      "equivalent": true
+    },
+    "compat": {
+      "(1, 64, 32, 32)": {
+        "output_shape": [
+          1,
+          64,
+          32,
+          32
+        ],
+        "ok": true
+      },
+      "(1, 64, 4, 4)": {
+        "output_shape": [
+          1,
+          64,
+          4,
+          4
+        ],
+        "ok": true
+      },
+      "(2, 64, 31, 31)": {
+        "output_shape": [
+          2,
+          64,
+          31,
+          31
+        ],
+        "ok": true
+      },
+      "torchscript_trace": "ok"
+    }
+  },
+  "cbam": {
+    "import": "ok",
+    "constructor": "ok",
+    "forward": {
+      "shapes": {
+        "(2, 64, 32, 32)": {
+          "output_shape": [
+            2,
+            64,
+            32,
+            32
+          ],
+          "shape_preserved": true,
+          "finite": true,
+          "dtype": "torch.float32",
+          "dtype_ok": true,
+          "device_moved": false,
+          "warnings": []
+        },
+        "(2, 128, 16, 16)": {
+          "output_shape": [
+            2,
+            128,
+            16,
+            16
+          ],
+          "shape_preserved": true,
+          "finite": true,
+          "dtype": "torch.float32",
+          "dtype_ok": true,
+          "device_moved": false,
+          "warnings": []
+        },
+        "(2, 256, 8, 8)": {
+          "output_shape": [
+            2,
+            256,
+            8,
+            8
+          ],
+          "shape_preserved": true,
+          "finite": true,
+          "dtype": "torch.float32",
+          "dtype_ok": true,
+          "device_moved": false,
+          "warnings": []
+        }
+      }
+    },
+    "backward": {
+      "(2, 64, 32, 32)": {
+        "loss": 0.0006853985250927508,
+        "input_grad_exists": true,
+        "input_grad_finite": true,
+        "params_with_grad": 7,
+        "params_total": 7
+      },
+      "(2, 128, 16, 16)": {
+        "loss": 0.0015395962400361896,
+        "input_grad_exists": true,
+        "input_grad_finite": true,
+        "params_with_grad": 7,
+        "params_total": 7
+      },
+      "(2, 256, 8, 8)": {
+        "loss": 0.0011777878971770406,
+        "input_grad_exists": true,
+        "input_grad_finite": true,
+        "params_with_grad": 7,
+        "params_total": 7
+      }
+    },
+    "eval": {
+      "(2, 64, 32, 32)": {
+        "output_shape": [
+          2,
+          64,
+          32,
+          32
+        ],
+        "shape_preserved": true,
+        "finite": true
+      },
+      "(2, 128, 16, 16)": {
+        "output_shape": [
+          2,
+          128,
+          16,
+          16
+        ],
+        "shape_preserved": true,
+        "finite": true
+      },
+      "(2, 256, 8, 8)": {
+        "output_shape": [
+          2,
+          256,
+          8,
+          8
+        ],
+        "shape_preserved": true,
+        "finite": true
+      }
+    },
+    "state_dict": {
+      "state_dict_tensors": 10,
+      "max_abs_diff": 0.0,
+      "equivalent": true
+    },
+    "compat": {
+      "(1, 64, 32, 32)": {
+        "output_shape": [
+          1,
+          64,
+          32,
+          32
+        ],
+        "ok": true
+      },
+      "(1, 64, 4, 4)": {
+        "output_shape": [
+          1,
+          64,
+          4,
+          4
+        ],
+        "ok": true
+      },
+      "(2, 64, 31, 31)": {
+        "output_shape": [
+          2,
+          64,
+          31,
+          31
+        ],
+        "ok": true
+      },
+      "torchscript_trace": "ok"
+    }
+  }
+}

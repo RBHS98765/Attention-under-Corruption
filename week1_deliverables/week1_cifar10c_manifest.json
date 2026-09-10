@@ -1,0 +1,324 @@
+{
+  "source": {
+    "name": "CIFAR-10-C and CIFAR-10-P",
+    "url": "https://zenodo.org/records/2535967",
+    "record": "2535967",
+    "doi": "10.5281/zenodo.2535967",
+    "license": "CC BY 4.0",
+    "creator": "Daniel Hendrycks",
+    "expected_md5": "56bf5dcef84df0e2308c6dcbcbbd8499"
+  },
+  "archive": {
+    "filename": "CIFAR-10-C.tar",
+    "size_bytes": 2918471680,
+    "md5": "56bf5dcef84df0e2308c6dcbcbbd8499",
+    "member_count": 21,
+    "corruption_file_count": 19,
+    "label_file": "CIFAR-10-C/labels.npy"
+  },
+  "corruptions": [
+    "gaussian_noise",
+    "shot_noise",
+    "impulse_noise",
+    "defocus_blur",
+    "glass_blur",
+    "motion_blur",
+    "zoom_blur",
+    "snow",
+    "frost",
+    "fog",
+    "brightness",
+    "contrast",
+    "elastic_transform",
+    "pixelate",
+    "jpeg_compression",
+    "speckle_noise",
+    "gaussian_blur",
+    "spatter",
+    "saturate"
+  ],
+  "standard_15": [
+    "gaussian_noise",
+    "shot_noise",
+    "impulse_noise",
+    "defocus_blur",
+    "glass_blur",
+    "motion_blur",
+    "zoom_blur",
+    "snow",
+    "frost",
+    "fog",
+    "brightness",
+    "contrast",
+    "elastic_transform",
+    "pixelate",
+    "jpeg_compression"
+  ],
+  "extra_4": [
+    "speckle_noise",
+    "gaussian_blur",
+    "spatter",
+    "saturate"
+  ],
+  "classification": "original_15_plus_4_extra",
+  "files": {
+    "gaussian_noise.npy": {
+      "size_bytes": 153600128,
+      "shape": [
+        50000,
+        32,
+        32,
+        3
+      ],
+      "dtype": "uint8",
+      "severity_count": 5,
+      "count_per_severity": 10000
+    },
+    "shot_noise.npy": {
+      "size_bytes": 153600128,
+      "shape": [
+        50000,
+        32,
+        32,
+        3
+      ],
+      "dtype": "uint8",
+      "severity_count": 5,
+      "count_per_severity": 10000
+    },
+    "impulse_noise.npy": {
+      "size_bytes": 153600128,
+      "shape": [
+        50000,
+        32,
+        32,
+        3
+      ],
+      "dtype": "uint8",
+      "severity_count": 5,
+      "count_per_severity": 10000
+    },
+    "defocus_blur.npy": {
+      "size_bytes": 153600128,
+      "shape": [
+        50000,
+        32,
+        32,
+        3
+      ],
+      "dtype": "uint8",
+      "severity_count": 5,
+      "count_per_severity": 10000
+    },
+    "glass_blur.npy": {
+      "size_bytes": 153600128,
+      "shape": [
+        50000,
+        32,
+        32,
+        3
+      ],
+      "dtype": "uint8",
+      "severity_count": 5,
+      "count_per_severity": 10000
+    },
+    "motion_blur.npy": {
+      "size_bytes": 153600128,
+      "shape": [
+        50000,
+        32,
+        32,
+        3
+      ],
+      "dtype": "uint8",
+      "severity_count": 5,
+      "count_per_severity": 10000
+    },
+    "zoom_blur.npy": {
+      "size_bytes": 153600128,
+      "shape": [
+        50000,
+        32,
+        32,
+        3
+      ],
+      "dtype": "uint8",
+      "severity_count": 5,
+      "count_per_severity": 10000
+    },
+    "snow.npy": {
+      "size_bytes": 153600128,
+      "shape": [
+        50000,
+        32,
+        32,
+        3
+      ],
+      "dtype": "uint8",
+      "severity_count": 5,
+      "count_per_severity": 10000
+    },
+    "frost.npy": {
+      "size_bytes": 153600128,
+      "shape": [
+        50000,
+        32,
+        32,
+        3
+      ],
+      "dtype": "uint8",
+      "severity_count": 5,
+      "count_per_severity": 10000
+    },
+    "fog.npy": {
+      "size_bytes": 153600128,
+      "shape": [
+        50000,
+        32,
+        32,
+        3
+      ],
+      "dtype": "uint8",
+      "severity_count": 5,
+      "count_per_severity": 10000
+    },
+    "brightness.npy": {
+      "size_bytes": 153600128,
+      "shape": [
+        50000,
+        32,
+        32,
+        3
+      ],
+      "dtype": "uint8",
+      "severity_count": 5,
+      "count_per_severity": 10000
+    },
+    "contrast.npy": {
+      "size_bytes": 153600128,
+      "shape": [
+        50000,
+        32,
+        32,
+        3
+      ],
+      "dtype": "uint8",
+      "severity_count": 5,
+      "count_per_severity": 10000
+    },
+    "elastic_transform.npy": {
+      "size_bytes": 153600128,
+      "shape": [
+        50000,
+        32,
+        32,
+        3
+      ],
+      "dtype": "uint8",
+      "severity_count": 5,
+      "count_per_severity": 10000
+    },
+    "pixelate.npy": {
+      "size_bytes": 153600128,
+      "shape": [
+        50000,
+        32,
+        32,
+        3
+      ],
+      "dtype": "uint8",
+      "severity_count": 5,
+      "count_per_severity": 10000
+    },
+    "jpeg_compression.npy": {
+      "size_bytes": 153600128,
+      "shape": [
+        50000,
+        32,
+        32,
+        3
+      ],
+      "dtype": "uint8",
+      "severity_count": 5,
+      "count_per_severity": 10000
+    },
+    "speckle_noise.npy": {
+      "size_bytes": 153600128,
+      "shape": [
+        50000,
+        32,
+        32,
+        3
+      ],
+      "dtype": "uint8",
+      "severity_count": 5,
+      "count_per_severity": 10000
+    },
+    "gaussian_blur.npy": {
+      "size_bytes": 153600128,
+      "shape": [
+        50000,
+        32,
+        32,
+        3
+      ],
+      "dtype": "uint8",
+      "severity_count": 5,
+      "count_per_severity": 10000
+    },
+    "spatter.npy": {
+      "size_bytes": 153600128,
+      "shape": [
+        50000,
+        32,
+        32,
+        3
+      ],
+      "dtype": "uint8",
+      "severity_count": 5,
+      "count_per_severity": 10000
+    },
+    "saturate.npy": {
+      "size_bytes": 153600128,
+      "shape": [
+        50000,
+        32,
+        32,
+        3
+      ],
+      "dtype": "uint8",
+      "severity_count": 5,
+      "count_per_severity": 10000
+    }
+  },
+  "labels": {
+    "filename": "labels.npy",
+    "size_bytes": 50128,
+    "shape": [
+      50000
+    ],
+    "dtype": "uint8",
+    "unique": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "blocks": 5,
+    "block_size": 10000,
+    "matches_cifar10_test": true
+  },
+  "required_corruptions": [
+    "brightness",
+    "contrast",
+    "defocus_blur",
+    "elastic_transform"
+  ],
+  "provenance": "Manifest assembled from a direct inspection of the official CIFAR-10-C.tar (Zenodo record 2535967, MD5 56bf5dcef84df0e2308c6dcbcbbd8499, 2,918,471,680 bytes) during Week 1 verification: full tar member listing (19 corruption .npy files + labels.npy), per-file byte sizes, labels.npy structure (5 identical blocks of 10,000, uint8, classes 0-9), and per-severity sampling of the four required corruptions. The 50,000 x 32 x 32 x 3 uint8 shape for every corruption follows from the fixed 153,600,128-byte file size (128-byte npy header + 50,000 x 3072 bytes) and the official generation script (hendrycks/robustness ImageNet-C/create_c/make_cifar_c.py), which applies 5 severities x 10,000 images to all 19 corruption types. Labels verified to match the canonical CIFAR-10 test labels."
+}
