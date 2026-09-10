@@ -1,0 +1,30 @@
+=== test_parameter_accounting.py ===
+  ok   backbone params identical
+  ok   plain has zero attention params
+  ok   se has attention params
+  ok   bam has attention params
+  ok   cbam has attention params
+  ok   se total diff == attention params
+  ok   bam total diff == attention params
+  ok   cbam total diff == attention params
+  ok   none non-trainable == 0
+  ok   se non-trainable == 0
+  ok   bam non-trainable == 0
+  ok   cbam non-trainable == 0
+  ok   none n_attention_blocks==4
+  ok   se n_attention_blocks==4
+  ok   bam n_attention_blocks==4
+  ok   cbam n_attention_blocks==4
+  ok   se block 0 channels==64
+  ok   se block 1 channels==64
+  ok   se block 2 channels==128
+  ok   se block 3 channels==256
+
+Parameter table:
+variant     total trainable non-train  backbone    attn classifier
+none     1301578   1301578         0   1301578       0       2570
+se       1313386   1313386         0   1301578   11808       2570
+bam      1325742   1325742         0   1301578   24164       2570
+cbam     1313786   1313786         0   1301578   12208       2570
+
+ALL PARAMETER-ACCOUNTING TESTS PASSED

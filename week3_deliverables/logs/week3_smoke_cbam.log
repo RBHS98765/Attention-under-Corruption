@@ -1,0 +1,8 @@
+
+========== SMOKE TRAIN: cbam ==========
+[cbam] epoch 1: train_loss=1.8509 train_acc=0.2926 val_acc=0.3695 lr=0.00000
+  [cbam] train_loss=1.8509 train_acc=0.2926 clean_acc=0.3730 loss_finite=True acc_ok=True ckpt=True eval_ok=True
+
+Variants done: ['bam', 'cbam', 'none', 'se']
+Wrote: /home/daytona/work/week3_project/logs/week3_smoke_results.json
+STATUS: PASS

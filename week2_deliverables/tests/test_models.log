@@ -1,0 +1,59 @@
+=== test_models.py ===
+== variant: none ==
+  ok   construct
+  ok   forward (2, 3, 32, 32)
+  ok   forward (1, 3, 32, 32)
+  ok   forward (4, 3, 32, 32)
+  ok   finite output
+  ok   training mode
+  ok   backward ran
+  ok   finite gradients
+  ok   eval mode
+  ok   eval finite output
+  ok   state_dict save/load
+  ok   cpu device
+  ok   parameter accounting
+== variant: se ==
+  ok   construct
+  ok   forward (2, 3, 32, 32)
+  ok   forward (1, 3, 32, 32)
+  ok   forward (4, 3, 32, 32)
+  ok   finite output
+  ok   training mode
+  ok   backward ran
+  ok   finite gradients
+  ok   eval mode
+  ok   eval finite output
+  ok   state_dict save/load
+  ok   cpu device
+  ok   parameter accounting
+== variant: bam ==
+  ok   construct
+  ok   forward (2, 3, 32, 32)
+  ok   forward (1, 3, 32, 32)
+  ok   forward (4, 3, 32, 32)
+  ok   finite output
+  ok   training mode
+  ok   backward ran
+  ok   finite gradients
+  ok   eval mode
+  ok   eval finite output
+  ok   state_dict save/load
+  ok   cpu device
+  ok   parameter accounting
+== variant: cbam ==
+  ok   construct
+  ok   forward (2, 3, 32, 32)
+  ok   forward (1, 3, 32, 32)
+  ok   forward (4, 3, 32, 32)
+  ok   finite output
+  ok   training mode
+  ok   backward ran
+  ok   finite gradients
+  ok   eval mode
+  ok   eval finite output
+  ok   state_dict save/load
+  ok   cpu device
+  ok   parameter accounting
+
+ALL MODEL TESTS PASSED

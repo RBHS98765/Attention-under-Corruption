@@ -1,0 +1,287 @@
+{
+  "variants": {
+    "none": {
+      "construct": {
+        "ok": true,
+        "detail": ""
+      },
+      "forward_shape_(2, 3, 32, 32)": {
+        "ok": true,
+        "detail": "got (2, 10)"
+      },
+      "forward_shape_(1, 3, 32, 32)": {
+        "ok": true,
+        "detail": "got (1, 10)"
+      },
+      "forward_shape_(4, 3, 32, 32)": {
+        "ok": true,
+        "detail": "got (4, 10)"
+      },
+      "finite_output": {
+        "ok": true,
+        "detail": ""
+      },
+      "training_mode": {
+        "ok": true,
+        "detail": ""
+      },
+      "backward": {
+        "ok": true,
+        "detail": ""
+      },
+      "finite_gradient": {
+        "ok": true,
+        "detail": "0 missing / 0 non-finite"
+      },
+      "eval_mode": {
+        "ok": true,
+        "detail": ""
+      },
+      "state_dict_save_load": {
+        "ok": true,
+        "detail": ""
+      },
+      "cpu_device": {
+        "ok": true,
+        "detail": "cpu"
+      },
+      "parameter_accounting": {
+        "ok": true,
+        "detail": "total=1301578"
+      },
+      "identity_no_attention_params": {
+        "ok": true,
+        "detail": "0 params found"
+      }
+    },
+    "se": {
+      "construct": {
+        "ok": true,
+        "detail": ""
+      },
+      "forward_shape_(2, 3, 32, 32)": {
+        "ok": true,
+        "detail": "got (2, 10)"
+      },
+      "forward_shape_(1, 3, 32, 32)": {
+        "ok": true,
+        "detail": "got (1, 10)"
+      },
+      "forward_shape_(4, 3, 32, 32)": {
+        "ok": true,
+        "detail": "got (4, 10)"
+      },
+      "finite_output": {
+        "ok": true,
+        "detail": ""
+      },
+      "training_mode": {
+        "ok": true,
+        "detail": ""
+      },
+      "backward": {
+        "ok": true,
+        "detail": ""
+      },
+      "finite_gradient": {
+        "ok": true,
+        "detail": "0 missing / 0 non-finite"
+      },
+      "eval_mode": {
+        "ok": true,
+        "detail": ""
+      },
+      "state_dict_save_load": {
+        "ok": true,
+        "detail": ""
+      },
+      "cpu_device": {
+        "ok": true,
+        "detail": "cpu"
+      },
+      "parameter_accounting": {
+        "ok": true,
+        "detail": "total=1313386"
+      },
+      "attention_shape_preserved": {
+        "ok": true,
+        "detail": ""
+      },
+      "attention_no_nan_inf": {
+        "ok": true,
+        "detail": ""
+      },
+      "attention_gradients_reach": {
+        "ok": true,
+        "detail": "0/16 missing grad"
+      },
+      "attention_in_model_parameters": {
+        "ok": true,
+        "detail": ""
+      }
+    },
+    "bam": {
+      "construct": {
+        "ok": true,
+        "detail": ""
+      },
+      "forward_shape_(2, 3, 32, 32)": {
+        "ok": true,
+        "detail": "got (2, 10)"
+      },
+      "forward_shape_(1, 3, 32, 32)": {
+        "ok": true,
+        "detail": "got (1, 10)"
+      },
+      "forward_shape_(4, 3, 32, 32)": {
+        "ok": true,
+        "detail": "got (4, 10)"
+      },
+      "finite_output": {
+        "ok": true,
+        "detail": ""
+      },
+      "training_mode": {
+        "ok": true,
+        "detail": ""
+      },
+      "backward": {
+        "ok": true,
+        "detail": ""
+      },
+      "finite_gradient": {
+        "ok": true,
+        "detail": "0 missing / 0 non-finite"
+      },
+      "eval_mode": {
+        "ok": true,
+        "detail": ""
+      },
+      "state_dict_save_load": {
+        "ok": true,
+        "detail": ""
+      },
+      "cpu_device": {
+        "ok": true,
+        "detail": "cpu"
+      },
+      "parameter_accounting": {
+        "ok": true,
+        "detail": "total=1325742"
+      },
+      "attention_shape_preserved": {
+        "ok": true,
+        "detail": ""
+      },
+      "attention_no_nan_inf": {
+        "ok": true,
+        "detail": ""
+      },
+      "attention_gradients_reach": {
+        "ok": true,
+        "detail": "0/80 missing grad"
+      },
+      "attention_in_model_parameters": {
+        "ok": true,
+        "detail": ""
+      }
+    },
+    "cbam": {
+      "construct": {
+        "ok": true,
+        "detail": ""
+      },
+      "forward_shape_(2, 3, 32, 32)": {
+        "ok": true,
+        "detail": "got (2, 10)"
+      },
+      "forward_shape_(1, 3, 32, 32)": {
+        "ok": true,
+        "detail": "got (1, 10)"
+      },
+      "forward_shape_(4, 3, 32, 32)": {
+        "ok": true,
+        "detail": "got (4, 10)"
+      },
+      "finite_output": {
+        "ok": true,
+        "detail": ""
+      },
+      "training_mode": {
+        "ok": true,
+        "detail": ""
+      },
+      "backward": {
+        "ok": true,
+        "detail": ""
+      },
+      "finite_gradient": {
+        "ok": true,
+        "detail": "0 missing / 0 non-finite"
+      },
+      "eval_mode": {
+        "ok": true,
+        "detail": ""
+      },
+      "state_dict_save_load": {
+        "ok": true,
+        "detail": ""
+      },
+      "cpu_device": {
+        "ok": true,
+        "detail": "cpu"
+      },
+      "parameter_accounting": {
+        "ok": true,
+        "detail": "total=1313786"
+      },
+      "attention_shape_preserved": {
+        "ok": true,
+        "detail": ""
+      },
+      "attention_no_nan_inf": {
+        "ok": true,
+        "detail": ""
+      },
+      "attention_gradients_reach": {
+        "ok": true,
+        "detail": "0/28 missing grad"
+      },
+      "attention_in_model_parameters": {
+        "ok": true,
+        "detail": ""
+      }
+    }
+  },
+  "attention_sanity": {},
+  "one_batch": {
+    "none": {
+      "loss": 2.5165247917175293,
+      "loss_finite": true,
+      "params_changed": true,
+      "ok": true
+    },
+    "se": {
+      "loss": 2.2417995929718018,
+      "loss_finite": true,
+      "params_changed": true,
+      "ok": true
+    },
+    "bam": {
+      "loss": 2.3766634464263916,
+      "loss_finite": true,
+      "params_changed": true,
+      "ok": true
+    },
+    "cbam": {
+      "loss": 2.399540424346924,
+      "loss_finite": true,
+      "params_changed": true,
+      "ok": true
+    }
+  },
+  "ok": true,
+  "known_warnings": [
+    "Upstream BAM ChannelGate contains BatchNorm1d after global pooling; a singleton B=1 training-mode forward raises ValueError because batch statistics cannot be estimated. Shape probes use eval mode for B=1, while the optimizer smoke test uses B=8 and passes."
+  ]
+}

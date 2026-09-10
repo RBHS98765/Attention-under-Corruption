@@ -1,0 +1,110 @@
+{
+  "project": "Do CNN Attention Modules Survive Common Corruptions? A Severity-Conditioned Comparison of SE, BAM, and CBAM on CIFAR-10-C",
+  "milestone": "Week 2 - matched backbone + pluggable attention",
+  "config": {
+    "backbone_name": "MatchedBackbone",
+    "input_size": [
+      3,
+      32,
+      32
+    ],
+    "num_classes": 10,
+    "channel_widths": [
+      64,
+      64,
+      128,
+      256
+    ],
+    "num_residual_blocks": 4,
+    "residual_blocks_per_stage": [
+      2,
+      1,
+      1
+    ],
+    "stem": "Conv2d(3,64,3,stride=1,padding=1) + BatchNorm2d + ReLU",
+    "attention_insertion": "after_conv_transformation_before_residual_add (every block)",
+    "attention_type": null,
+    "se_reduction": 16,
+    "bam_settings": {
+      "reduction_ratio": 16,
+      "dilation_conv_num": 2,
+      "dilation_val": 4
+    },
+    "cbam_settings": {
+      "reduction_ratio": 16,
+      "pool_types": [
+        "avg",
+        "max"
+      ],
+      "no_spatial": false
+    },
+    "normalization": "BatchNorm2d",
+    "activation": "ReLU",
+    "classifier": "AdaptiveAvgPool2d(1) -> Linear(256, 10)",
+    "parameter_counting_method": "sum(p.numel() for p in model.parameters())",
+    "random_seed": 0
+  },
+  "variants": {
+    "none": {
+      "total": 1301578,
+      "trainable": 1301578,
+      "non_trainable": 0,
+      "backbone_only": 1301578,
+      "attention": 0,
+      "classifier": 2570,
+      "macs_conv_linear": 270207488,
+      "attention_blocks": 4
+    },
+    "se": {
+      "total": 1313386,
+      "trainable": 1313386,
+      "non_trainable": 0,
+      "backbone_only": 1301578,
+      "attention": 11808,
+      "classifier": 2570,
+      "macs_conv_linear": 270218752,
+      "attention_blocks": 4
+    },
+    "bam": {
+      "total": 1325742,
+      "trainable": 1325742,
+      "non_trainable": 0,
+      "backbone_only": 1301578,
+      "attention": 24164,
+      "classifier": 2570,
+      "macs_conv_linear": 272458240,
+      "attention_blocks": 4
+    },
+    "cbam": {
+      "total": 1313786,
+      "trainable": 1313786,
+      "non_trainable": 0,
+      "backbone_only": 1301578,
+      "attention": 12208,
+      "classifier": 2570,
+      "macs_conv_linear": 270462080,
+      "attention_blocks": 4
+    }
+  },
+  "backbone_params_identical": true,
+  "attention_insertion": "after_conv_transformation_before_residual_add (every block)",
+  "environment": {
+    "python": "3.12.10",
+    "pytorch": "2.13.0+cpu",
+    "torchvision": "0.28.0+cpu",
+    "cuda": "not available (CPU-only)",
+    "os": "Linux x86_64"
+  },
+  "upstream": {
+    "repository": "https://github.com/Jongchan/attention-module",
+    "commit": "459efad0e05ee7dde50c41ca10a3d0800bc3792a",
+    "bam_patch": "bam_gate_activation_fix.patch",
+    "patch_scope": "removes ONLY the dead undefined assignment 'self.gate_activation = gate_activation' from ChannelGate.__init__; forward computation unchanged (AST-verified)",
+    "upstream_modified": false
+  },
+  "known_warnings": [
+    "Upstream BAM ChannelGate contains BatchNorm1d after global pooling; a singleton B=1 training-mode forward raises ValueError because batch statistics cannot be estimated. Shape probes use eval mode for B=1; the optimizer smoke test uses B=8 and passes.",
+    "BAM.__init__ signature extended with optional reduction_ratio/dilation args (defaults match upstream); forward unchanged."
+  ],
+  "status": "WEEK 2 PASS WITH NON-BLOCKING ISSUES"
+}

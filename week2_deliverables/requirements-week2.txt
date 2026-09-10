@@ -1,0 +1,6 @@
+# Week 2 requirements (verified environment)
+# Installed and verified on 2026-09-02 in the Week 2 sandbox.
+# CPU-only build; no CUDA available in the verification environment.
+torch==2.13.0+cpu
+torchvision==0.28.0+cpu
+numpy>=1.26

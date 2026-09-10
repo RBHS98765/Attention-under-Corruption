@@ -1,0 +1,2 @@
+variant,epoch,train_loss,train_acc,lr,timestamp,val_loss,val_acc
+none,1,1.8629297521591186,0.2893,0.0,2026-09-08 05:42:22,1.6560946685791016,0.3788

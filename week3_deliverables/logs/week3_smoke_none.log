@@ -1,0 +1,8 @@
+
+========== SMOKE TRAIN: none ==========
+[none] epoch 1: train_loss=1.8629 train_acc=0.2893 val_acc=0.3788 lr=0.00000
+  [none] train_loss=1.8629 train_acc=0.2893 clean_acc=0.3860 loss_finite=True acc_ok=True ckpt=True eval_ok=True
+
+Variants done: ['none']
+Wrote: /home/daytona/work/week3_project/logs/week3_smoke_results.json
+STATUS: INCOMPLETE
