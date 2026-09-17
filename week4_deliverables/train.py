@@ -133,7 +133,7 @@ def write_log_csv(path, rows):
 
 def train_variant(variant, epochs=None, subset=None, seed=None, batch_size=None,
                   lr=None, ckpt_dir=None, log_dir=None, device=None):
-    """Train one variant and return (model, metrics, ckpt_path)."""
+    """Train one variant and save a checkpoint after every epoch."""
     epochs = epochs or config.EPOCHS
     subset = subset or config.TRAIN_SUBSET
     seed = config.SEED if seed is None else seed
@@ -141,49 +141,135 @@ def train_variant(variant, epochs=None, subset=None, seed=None, batch_size=None,
     lr = lr or config.LEARNING_RATE
     ckpt_dir = ckpt_dir or config.CKPT_DIR
     log_dir = log_dir or config.LOG_DIR
+
     os.makedirs(ckpt_dir, exist_ok=True)
     os.makedirs(log_dir, exist_ok=True)
+
     device = device or torch.device("cpu")
 
     set_seed(seed)
+
     train_ds, test_ds = load_cifar10(subset=subset)
+
     train_loader = torch.utils.data.DataLoader(
-        train_ds, batch_size=batch_size, shuffle=True, num_workers=0)
+        train_ds,
+        batch_size=batch_size,
+        shuffle=True,
+        num_workers=0
+    )
+
     test_loader = torch.utils.data.DataLoader(
-        test_ds, batch_size=batch_size, shuffle=False, num_workers=0)
+        test_ds,
+        batch_size=batch_size,
+        shuffle=False,
+        num_workers=0
+    )
 
     model = build_model(attention_type=variant).to(device)
+
     criterion = nn.CrossEntropyLoss()
-    optimizer = optim.SGD(model.parameters(), lr=lr, momentum=config.MOMENTUM,
-                          weight_decay=config.WEIGHT_DECAY)
+
+    optimizer = optim.SGD(
+        model.parameters(),
+        lr=lr,
+        momentum=config.MOMENTUM,
+        weight_decay=config.WEIGHT_DECAY
+    )
+
     steps_per_epoch = len(train_loader)
     total_steps = steps_per_epoch * epochs
-    scheduler = optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=total_steps)
+
+    scheduler = optim.lr_scheduler.CosineAnnealingLR(
+        optimizer,
+        T_max=total_steps
+    )
 
     log_rows = []
+
     for epoch in range(1, epochs + 1):
+
         train_loss, train_acc, cur_lr = train_one_epoch(
-            model, train_loader, optimizer, criterion, device, variant, epoch,
-            log_rows, lr_scheduler=scheduler)
-        val_acc, val_loss = evaluate(model, test_loader, device, criterion)
+            model,
+            train_loader,
+            optimizer,
+            criterion,
+            device,
+            variant,
+            epoch,
+            log_rows,
+            lr_scheduler=scheduler
+        )
+
+        val_acc, val_loss = evaluate(
+            model,
+            test_loader,
+            device,
+            criterion
+        )
+
         log_rows[-1]["val_loss"] = val_loss
         log_rows[-1]["val_acc"] = val_acc
-        print(f"[{variant}] epoch {epoch}: train_loss={train_loss:.4f} "
-              f"train_acc={train_acc:.4f} val_acc={val_acc:.4f} lr={cur_lr:.5f}")
 
-    ckpt_path = os.path.join(ckpt_dir, config.CKPT_NAME.format(
-        variant=variant, seed=seed, epoch=epochs))
-    save_checkpoint(ckpt_path, model, optimizer, epochs, seed, variant,
-                    {"train_loss": train_loss, "train_acc": train_acc,
-                     "val_acc": val_acc, "val_loss": val_loss})
-    log_path = os.path.join(log_dir, f"smoke_train_{variant}.csv")
+        print(
+            f"[{variant}] epoch {epoch}: "
+            f"train_loss={train_loss:.4f} "
+            f"train_acc={train_acc:.4f} "
+            f"val_acc={val_acc:.4f} "
+            f"lr={cur_lr:.5f}"
+        )
+
+        # Save checkpoint after every epoch
+        ckpt_path = os.path.join(
+            ckpt_dir,
+            config.CKPT_NAME.format(
+                variant=variant,
+                seed=seed,
+                epoch=epoch
+            )
+        )
+
+        save_checkpoint(
+            ckpt_path,
+            model,
+            optimizer,
+            epoch,
+            seed,
+            variant,
+            {
+                "train_loss": train_loss,
+                "train_acc": train_acc,
+                "val_acc": val_acc,
+                "val_loss": val_loss
+            }
+        )
+
+    log_path = os.path.join(
+        log_dir,
+        f"train_{variant}_seed{seed}.csv"
+    )
+
     write_log_csv(log_path, log_rows)
 
-    return model, {"train_loss": train_loss, "train_acc": train_acc,
-                   "val_acc": val_acc, "val_loss": val_loss,
-                   "ckpt_path": ckpt_path, "log_path": log_path,
-                   "seed": seed, "epochs": epochs, "variant": variant}
+    final_ckpt_path = os.path.join(
+        ckpt_dir,
+        config.CKPT_NAME.format(
+            variant=variant,
+            seed=seed,
+            epoch=epochs
+        )
+    )
 
+    return model, {
+        "train_loss": train_loss,
+        "train_acc": train_acc,
+        "val_acc": val_acc,
+        "val_loss": val_loss,
+        "ckpt_path": final_ckpt_path,
+        "log_path": log_path,
+        "seed": seed,
+        "epochs": epochs,
+        "variant": variant
+    }
 
 if __name__ == "__main__":
     import sys
