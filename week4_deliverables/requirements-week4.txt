@@ -1,0 +1,9 @@
+# Week 3 requirements (verified environment, 2026-09-07)
+# CPU-only build; no CUDA in the verification environment.
+torch==2.13.0+cpu
+torchvision==0.28.0+cpu
+numpy>=1.26
+scipy>=1.11
+# Data generation (CIFAR-10-C corruptions, official algorithm)
+scikit-image>=0.22
+opencv-python-headless>=4.8
