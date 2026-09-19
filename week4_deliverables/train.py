@@ -1,4 +1,5 @@
-﻿"""CIFAR-10 training loop for the matched backbone variants (Week 3, Part B).
+
+"""CIFAR-10 training loop for the matched backbone variants (Week 3, Part B).
 
 - Standard CIFAR-10 training split with a standard augmentation pipeline.
 - Cross-entropy loss, SGD with momentum + weight decay, cosine-annealing LR.
@@ -129,7 +130,7 @@ def train_one_epoch(
 
 
 def evaluate(model, loader, device, criterion=None):
-    """Clean CIFAR-10 test evaluation."""
+    """Evaluate on the supplied CIFAR-10 evaluation loader."""
     model.eval()
 
     correct = 0
@@ -202,23 +203,28 @@ def train_variant(
     log_dir=None,
     device=None
 ):
-    """Train one variant and return metrics."""
+    """Train one attention variant and return its final metrics."""
 
     epochs = config.EPOCHS if epochs is None else epochs
     subset = config.TRAIN_SUBSET if subset is None else subset
     seed = config.SEED if seed is None else seed
     batch_size = config.BATCH_SIZE if batch_size is None else batch_size
     lr = config.LEARNING_RATE if lr is None else lr
-   if ckpt_dir is None:
-    ckpt_dirs = {
-        "none": "C:/cifar_data/week4_ckpts_none",
-        "se": "C:/cifar_data/week4_ckpts_se",
-        "bam": "C:/cifar_data/week4_ckpts_bam",
-        "cbam": "C:/cifar_data/week4_ckpts_cbam",
-    }
-    ckpt_dir = ckpt_dirs.get(variant, config.CKPT_DIR)
+
+    # Choose a separate checkpoint directory for each variant.
+    if ckpt_dir is None:
+        ckpt_dirs = {
+            "none": "C:/cifar_data/week4_ckpts_none",
+            "se": "C:/cifar_data/week4_ckpts_se",
+            "bam": "C:/cifar_data/week4_ckpts_bam",
+            "cbam": "C:/cifar_data/week4_ckpts_cbam",
+        }
+        ckpt_dir = ckpt_dirs.get(variant, config.CKPT_DIR)
+
     log_dir = config.LOG_DIR if log_dir is None else log_dir
-    device = device or torch.device("cpu")
+    device = device or torch.device(
+        "cuda" if torch.cuda.is_available() else "cpu"
+    )
 
     os.makedirs(ckpt_dir, exist_ok=True)
     os.makedirs(log_dir, exist_ok=True)
@@ -263,7 +269,6 @@ def train_variant(
     log_rows = []
 
     for epoch in range(1, epochs + 1):
-
         train_loss, train_acc, cur_lr = train_one_epoch(
             model,
             train_loader,
@@ -275,6 +280,9 @@ def train_variant(
             log_rows
         )
 
+        # This currently evaluates the CIFAR-10 test split each epoch.
+        # For final research reporting, keep a separate validation split
+        # for model selection and reserve the test split for final evaluation.
         val_acc, val_loss = evaluate(
             model,
             test_loader,
@@ -285,7 +293,7 @@ def train_variant(
         log_rows[-1]["val_loss"] = val_loss
         log_rows[-1]["val_acc"] = val_acc
 
-        # Save checkpoint after every epoch.
+        # Save a checkpoint after every epoch.
         ckpt_path = os.path.join(
             ckpt_dir,
             config.CKPT_NAME.format(
@@ -327,10 +335,7 @@ def train_variant(
         f"train_{variant}_seed{seed}.csv"
     )
 
-    write_log_csv(
-        log_path,
-        log_rows
-    )
+    write_log_csv(log_path, log_rows)
 
     final_ckpt_path = os.path.join(
         ckpt_dir,
